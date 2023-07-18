@@ -23,5 +23,4 @@ public class VacancyController {
     public String getCreationPage() {
         return "vacancies/create";
     }
-
 }

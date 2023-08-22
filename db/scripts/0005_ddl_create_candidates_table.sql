@@ -1,4 +1,3 @@
-drop table candidates;
 create table candidates
 (
     id serial primary key,

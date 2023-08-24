@@ -40,7 +40,7 @@ class Sql2oCandidateRepositoryTest {
         sql2oCandidateRepository = new Sql2oCandidateRepository(sql2o);
         sql2oFileRepository = new Sql2oFileRepository(sql2o);
 
-        file = new File("123", "123");
+        file = new File("test", "test_2");
         sql2oFileRepository.save(file);
     }
 

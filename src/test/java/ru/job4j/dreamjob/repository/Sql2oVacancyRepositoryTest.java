@@ -42,7 +42,7 @@ public class Sql2oVacancyRepositoryTest {
         sql2oVacancyRepository = new Sql2oVacancyRepository(sql2o);
         sql2oFileRepository = new Sql2oFileRepository(sql2o);
 
-        file = new File("321", "321");
+        file = new File("test", "test");
         sql2oFileRepository.save(file);
     }
 

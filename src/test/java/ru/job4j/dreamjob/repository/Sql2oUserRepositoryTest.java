@@ -64,11 +64,10 @@ class Sql2oUserRepositoryTest {
     @Test
     public void whenSaveTwoSameEmailButSaveOnlyOne() {
         var user1 = sql2oUserRepository.save(new User(0, "mail@gmail.com", "name", "password")).get();
-        var user2 = sql2oUserRepository.save(new User(0, "mail@gmail.com", "ANOTHER", "password")).get();
+        var user2 = sql2oUserRepository.save(new User(0, "mail@gmail.com", "ANOTHER", "password"));
         var savedUser1 = sql2oUserRepository.findByEmailAndPassword(user1.getEmail(), user1.getPassword()).get();
-        var savedUser2 = sql2oUserRepository.findByEmailAndPassword(user2.getEmail(), user2.getPassword()).get();
         assertThat(savedUser1).isEqualTo(user1);
-        assertThat(savedUser2).isEqualTo(user1);
+        assertThat(user2).isEqualTo(empty());
     }
 
     @Test

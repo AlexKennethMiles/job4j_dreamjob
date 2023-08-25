@@ -22,13 +22,7 @@ public class FileController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable int id, Model model, HttpSession session) {
-        var user = (User) session.getAttribute("user");
-        if (user == null) {
-            user = new User();
-            user.setName("Гость");
-        }
-        model.addAttribute("user", user);
+    public ResponseEntity<?> getById(@PathVariable int id, Model model) {
         var contentOptional = fileService.getFileById(id);
         if (contentOptional.isEmpty()) {
             return ResponseEntity.notFound().build();

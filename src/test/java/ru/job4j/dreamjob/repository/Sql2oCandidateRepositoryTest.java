@@ -19,6 +19,7 @@ import static java.util.Optional.empty;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class Sql2oCandidateRepositoryTest {
+
     private static Sql2oCandidateRepository sql2oCandidateRepository;
     private static Sql2oFileRepository sql2oFileRepository;
     private static File file;
@@ -123,4 +124,5 @@ class Sql2oCandidateRepositoryTest {
         var isUpdated = sql2oCandidateRepository.update(candidate);
         assertThat(isUpdated).isFalse();
     }
+
 }

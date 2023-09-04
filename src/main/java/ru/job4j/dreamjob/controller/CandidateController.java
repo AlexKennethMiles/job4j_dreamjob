@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.job4j.dreamjob.dto.FileDto;
 import ru.job4j.dreamjob.model.Candidate;
-import ru.job4j.dreamjob.model.User;
 import ru.job4j.dreamjob.service.CandidateService;
 import ru.job4j.dreamjob.service.CityService;
-
-import javax.servlet.http.HttpSession;
 
 @ThreadSafe
 @Controller
@@ -65,7 +62,7 @@ public class CandidateController {
         try {
             var isUpdated = candidateService.update(candidate, new FileDto(file.getOriginalFilename(), file.getBytes()));
             if (!isUpdated) {
-                model.addAttribute("message", "Вакансия с указанным идентификатором не найдена");
+                model.addAttribute("message", "Кандидат с указанным идентификатором не найден");
                 return "errors/404";
             }
             return "redirect:/candidates";

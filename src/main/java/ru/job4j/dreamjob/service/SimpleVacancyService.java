@@ -12,7 +12,6 @@ import java.util.Optional;
 public class SimpleVacancyService implements VacancyService {
 
     private final VacancyRepository vacancyRepository;
-
     private final FileService fileService;
 
     public SimpleVacancyService(VacancyRepository sql2oVacancyRepository, FileService fileService) {
@@ -33,12 +32,12 @@ public class SimpleVacancyService implements VacancyService {
 
     @Override
     public boolean deleteById(int id) {
-        var fileOptional = findById(id);
-        if (fileOptional.isEmpty()) {
+        var vacancyOptional = findById(id);
+        if (vacancyOptional.isEmpty()) {
             return false;
         }
         var isDeleted = vacancyRepository.deleteById(id);
-        fileService.deleteById(fileOptional.get().getFileId());
+        fileService.deleteById(vacancyOptional.get().getFileId());
         return isDeleted;
     }
 

@@ -14,7 +14,6 @@ import java.util.Optional;
 public class SimpleCandidateService implements CandidateService {
 
     private final CandidateRepository candidateRepository;
-
     private final FileService fileService;
 
     public SimpleCandidateService(CandidateRepository sql2oCandidateRepository, FileService fileService) {
@@ -30,12 +29,12 @@ public class SimpleCandidateService implements CandidateService {
 
     @Override
     public boolean deleteById(int id) {
-        var fileOptional = findById(id);
-        if (fileOptional.isEmpty()) {
+        var candidateOptional = findById(id);
+        if (candidateOptional.isEmpty()) {
             return false;
         }
         var isDeleted = candidateRepository.deleteById(id);
-        fileService.deleteById(fileOptional.get().getFileId());
+        fileService.deleteById(candidateOptional.get().getFileId());
         return isDeleted;
     }
 
@@ -67,4 +66,5 @@ public class SimpleCandidateService implements CandidateService {
     public Collection<Candidate> findAll() {
         return candidateRepository.findAll();
     }
+
 }
